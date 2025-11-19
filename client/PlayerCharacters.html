@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Player Characters</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>Player Characters</h1>
+
+<form id="playerForm">
+  <input type="text" id="username" placeholder="Username" required>
+  <input type="number" id="level" placeholder="Level" required>
+  <label>
+    <input type="checkbox" id="is_online"> Online
+  </label>
+  <button type="submit">Add Player</button>
+</form>
+
+<button onclick="loadPlayers()">Load Players</button>
+<ul id="list"></ul>
+
+<div class="back-home">
+  <a href="index.html">Back to Home</a>
+</div>
+
+<script>
+  async function loadPlayers() {
+    const res = await fetch('http://localhost:5000/api/players');
+    const data = await res.json();
+    const list = document.getElementById('list');
+    list.innerHTML = '';
+    data.forEach(p => {
+      const li = document.createElement('li');
+      li.textContent = `${p.username} — Level ${p.level} (${p.is_online ? 'Online' : 'Offline'})`;
+      list.appendChild(li);
+    });
+  }
+
+  document.getElementById('playerForm').addEventListener('submit', async e => {
+    e.preventDefault();
+    await fetch('http://localhost:5000/api/players', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        username: document.getElementById('username').value,
+        level: parseInt(document.getElementById('level').value),
+        is_online: document.getElementById('is_online').checked
+      })
+    });
+    e.target.reset();
+    loadPlayers();
+  });
+</script>
+</body>
+</html>
