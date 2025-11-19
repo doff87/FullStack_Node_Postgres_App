@@ -157,5 +157,9 @@ Handling API Requests:
 David Offutt  
 Computer Science Student  
 Lake Washington Institute of Technology  
+
 GitHub: https://github.com/doff87  
 GitHub Portfolio: https://github.com/doff87/CS_Portfolio
+LinkedIn: https://www.linkedin.com/in/d-offutt/  
+
+---
