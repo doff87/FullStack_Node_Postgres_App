@@ -62,6 +62,7 @@ Enemies
 
 ## Project Structure
 
+```
 server/
   controllers/
     enemyController.js
@@ -83,7 +84,8 @@ server/
     Enemies.html
     style.css
   db.js
-  index.js
+index.js
+```
 
 ---
 
@@ -97,6 +99,7 @@ server/
 
 3. Edit config/config.json to match your local credentials
    Example:
+  ```
    {
      "development": {
        "username": "postgres",
@@ -107,6 +110,7 @@ server/
        "port": 5432
      }
    }
+   ```
 
 4. Run migrations
    npx sequelize-cli db:migrate
